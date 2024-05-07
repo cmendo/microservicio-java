@@ -2,7 +2,9 @@ name: CICD_EjercicioFinal
 
 on:
   push:
-  workflow_dispatch:
+    branches: 
+    - feature-ms-carlosMendoza-ejercicioFinal
+  #workflow_dispatch:
 
 jobs:
   
