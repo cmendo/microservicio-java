@@ -21,8 +21,6 @@
 	<dependencies>
 		<!-- UN COMENTARIO QUE JODA -->
 		<dependency>
-			<!-- OTRO QUE DULPIQUE Y JODA -->
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
