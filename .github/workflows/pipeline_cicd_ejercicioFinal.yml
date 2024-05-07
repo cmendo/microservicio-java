@@ -26,8 +26,9 @@ jobs:
         run: |
           mvn package test
         
-      #- name: Reporte Jacoco
-       # run: mvn jacoco:report
+      - name: Reporte Jacoco
+        run: |
+          mvn jacoco:report
         
       - name: Analisis SonarCloud
         run: |
