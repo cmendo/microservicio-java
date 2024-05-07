@@ -1,34 +1,24 @@
 name: CICD_EjercicioFinal
-
 on:
   push:
     branches: 
     - feature-ms-carlosMendoza-ejercicioFinal
   ##workflow_dispatch:
-
 jobs:
-  
   build:
-    
     runs-on: ubuntu-latest
-
     steps:
-    
       - name: Clonacion de codigo
         uses: actions/checkout@v4
-
       - name: Setup Java JDK
         uses: actions/setup-java@v4.2.1
         with:
           java-version: '17'
           distribution: 'temurin'
-      
       - name: Compilacion
         run: mvn package
-
       - name: Ejecucion Test Unitarios
         run: mvn package test
-
       - name: Reporte Jacoco
         run: mvn jacoco:report
 
@@ -48,8 +38,7 @@ jobs:
           #restore-keys: ${{ runner.os }}-m2
 ###################################
       - name: Analisis SonarCloud
-        run: |
-          mvn clean verify sonar:sonar -Pcoverage\
+        run: mvn clean verify sonar:sonar -Pcoverage\
             -Dsonar.token=${{secrets.SONAR_TOKEN}} \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.organization=cmendo \
