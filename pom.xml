@@ -37,7 +37,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<!-- Agregamos plugin JaCoCo 
+			<!-- Agregamos plugin JaCoCo -->
 			<plugin>
             			<groupId>org.jacoco</groupId>
             			<artifactId>jacoco-maven-plugin</artifactId>
@@ -57,7 +57,7 @@
                     				</goals>
                 			</execution>
             			</executions>
-        		</plugin>-->
+        		</plugin>
 			<!-- Agregamos plugin Sonar
 			<plugin>
             			<groupId>org.sonarsource.scanner.maven</groupId>
