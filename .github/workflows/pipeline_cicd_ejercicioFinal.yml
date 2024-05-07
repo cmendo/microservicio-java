@@ -28,7 +28,7 @@ jobs:
         
       - name: Analisis SonarCloud
         run: mvn clean verify sonar:sonar \
-            -Dsonar.token=${{secrets.SONAR_TOKEN}} \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.organization=cmendo \
-            -Dsonar.projectKey=cmendo_microservicio-java
+          -Dsonar.token=${{secrets.SONAR_TOKEN}} \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.organization=cmendo \
+          -Dsonar.projectKey=cmendo_microservicio-java
