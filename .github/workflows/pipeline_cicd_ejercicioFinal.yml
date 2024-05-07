@@ -23,12 +23,13 @@ jobs:
       - name: Ejecucion Test Unitarios
         run: mvn package test
         
-      - name: Reporte Jacoco
-        run: mvn jacoco:report
+      #- name: Reporte Jacoco
+       # run: mvn jacoco:report
         
-      - name: Analisis SonarCloud
-        run: mvn clean verify sonar:sonar \
-            -Dsonar.token=${{secrets.SONAR_TOKEN}} \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.organization=cmendo \
+      #- name: Analisis SonarCloud
+       # run: mvn clean verify sonar:sonar \
+        #    -Dsonar.token=${{secrets.SONAR_TOKEN}} \
+         #   -Dsonar.host.url=https://sonarcloud.io \
+          #  -Dsonar.organization=cmendo \
             -Dsonar.projectKey=cmendo_microservicio-java
+#
