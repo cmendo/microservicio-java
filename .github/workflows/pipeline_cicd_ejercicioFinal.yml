@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Clonacion de codigo
         uses: actions/checkout@v4
+        
       - name: Setup Java JDK
         uses: actions/setup-java@v4.2.1
         with:
@@ -17,17 +18,20 @@ jobs:
           distribution: 'temurin'
           
       - name: Compilacion
-        run: mvn package
+        run: |
+          mvn package
         #run: mvn -B clean verify
         
       - name: Ejecucion Test Unitarios
-        run: mvn package test
+        run: |
+          mvn package test
         
       #- name: Reporte Jacoco
        # run: mvn jacoco:report
         
       - name: Analisis SonarCloud
-        run: mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
+        run: |
+          mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
           -Dsonar.token=${{secrets.SONAR_TOKEN}} \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.organization=cmendo \
