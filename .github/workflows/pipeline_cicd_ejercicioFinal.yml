@@ -28,11 +28,14 @@ jobs:
         
       - name: Reporte Jacoco
         run: |
-          mvn jacoco:report
-        
+          #mvn jacoco:report
+          mvn -Dsonar.coverage.jacoco.xmlReportPaths=../app-it/target/site/jacoco-aggregate/jacoco.xml \
+              org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar -Pcoverage
+              
       - name: Analisis SonarCloud
         run: |
           mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
+          #-Dsonar.coverage.jacoco.xmlReportPaths=../app-it/target/site/jacoco-aggregate/jacoco.xml \
           -Dsonar.token=${{secrets.SONAR_TOKEN}} \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.organization=cmendo \
