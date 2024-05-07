@@ -41,7 +41,7 @@
 			<plugin>
             			<groupId>org.jacoco</groupId>
             			<artifactId>jacoco-maven-plugin</artifactId>
-            			<version>0.8.7</version> <!-- Versión adecuada del plugin JaCoCo -->
+            			<version>0.8.7</version>
             			<executions>
                 			<execution>
                     				<id>default-prepare-agent</id>
@@ -62,7 +62,7 @@
 			<plugin>
             			<groupId>org.sonarsource.scanner.maven</groupId>
             			<artifactId>sonar-maven-plugin</artifactId>
-            			<version>3.11.0.3922</version> <!-- Versión adecuada del plugin SonarScanner -->
+            			<version>3.11.0.3922</version>
         		</plugin> -->
 		</plugins>
 	</build>
