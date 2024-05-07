@@ -22,22 +22,19 @@ jobs:
           distribution: 'temurin'
       
       - name: Compilacion
-        run: |
-          mvn package
-
-      - name: Reporte Jacoco
-        run: |
-          mvn jacoco:report
+        run: mvn package
 
       - name: Ejecucion Test Unitarios
-        run: |
-          mvn package test
+        run: mvn package test
+
+      - name: Reporte Jacoco
+        run: mvn jacoco:report
      
-      - name: Setup Java JDK
-        uses: actions/setup-java@v4.2.1
-        with:
-          java-version: '17'
-          distribution: 'temurin'
+      #- name: Setup Java JDK
+       # uses: actions/setup-java@v4.2.1
+        #with:
+         # java-version: '17'
+          #distribution: 'temurin'
 
       #- name: Cobertura de Test
        # run: |
