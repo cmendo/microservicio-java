@@ -20,12 +20,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-
-      #- name: Setup Java JDK
-       # uses: actions/setup-java@v4.2.1
-        #with:
-         # java-version: '8'
-          #distribution: 'temurin'
       
       - name: Compilacion
         run: mvn package
@@ -35,10 +29,6 @@ jobs:
 
       - name: Reporte Jacoco
         run: mvn jacoco:report
-
-      #- name: Cobertura de Test
-       # run: |
-        #    cat target/site/jacoco/index.html | grep "Overall coverage" | awk -F'>' '{print $3}' | awk -F'80%' '{print $1}'
 
       - name: Analisis SonarCloud
         run: |
