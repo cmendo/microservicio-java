@@ -37,3 +37,8 @@ jobs:
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.organization=cmendo \
           -Dsonar.projectKey=cmendo_microservicio-java
+      
+      - name: SonarQube Quality Gate Check
+        uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
+        with:
+             scanMetadataReportFile: target/sonar/report-task.txt
