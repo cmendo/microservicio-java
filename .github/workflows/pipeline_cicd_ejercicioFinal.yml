@@ -17,8 +17,8 @@ jobs:
           distribution: 'temurin'
           
       - name: Compilacion
-        #run: mvn package
-        run: mvn -B clean verify
+        run: mvn package
+        #run: mvn -B clean verify
         
       - name: Ejecucion Test Unitarios
         run: mvn package test
@@ -27,8 +27,7 @@ jobs:
         run: mvn jacoco:report
         
       - name: Analisis SonarCloud
-        #run: mvn clean verify sonar:sonar \
-        run: mvn -B sonar:sonar \
+        run: mvn clean verify sonar:sonar \
             -Dsonar.token=${{secrets.SONAR_TOKEN}} \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.organization=cmendo \
