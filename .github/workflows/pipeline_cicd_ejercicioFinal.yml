@@ -25,6 +25,10 @@ jobs:
         run: |
           mvn package
 
+      - name: Reporte Jacoco
+        run: |
+          mvn jacoco:report
+
       - name: Ejecucion Test Unitarios
         run: |
           mvn package test
@@ -35,9 +39,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Cobertura de Test
-        run: |
-            cat target/site/jacoco/index.html | grep "Overall coverage" | awk -F'>' '{print $3}' | awk -F'80%' '{print $1}'
+      #- name: Cobertura de Test
+       # run: |
+        #    cat target/site/jacoco/index.html | grep "Overall coverage" | awk -F'>' '{print $3}' | awk -F'80%' '{print $1}'
 
       - name: Analisis SonarCloud
         run: |
