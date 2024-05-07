@@ -1,100 +1,56 @@
-name: SonarCloud
+name: CICD_EjercicioFinal
+
 on:
   push:
-    branches:
-      - feature-ms-carlosMendoza-ejercicioFinal
-  #pull_request:
-   # types: [opened, synchronize, reopened]
+    branches: 
+    - feature-ms-carlosMendoza-ejercicioFinal
+  ##workflow_dispatch:
+
 jobs:
+  
   build:
-    name: Build and analyze
+    
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+    
+      - name: Clonacion de codigo
+        uses: actions/checkout@v4
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.2.1
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: 17
-          distribution: 'zulu' # Alternative distribution options are available.
+          java-version: '17'
+          distribution: 'temurin'
+      
+      - name: Compilacion
+        run: mvn package
+
+      - name: Ejecucion Test Unitarios
+        run: mvn package test
+
+      - name: Reporte Jacoco
+        run: mvn jacoco:report
+
+      #LINEA AGREGADA
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-      
+        
       - name: Cache Maven packages
         uses: actions/cache@v3
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-          
-      - name: Build and analyze
-        #env:
-         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          #SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-           -Dsonar.token=${{secrets.SONAR_TOKEN}} \
-           -Dsonar.host.url=https://sonarcloud.io \
-           -Dsonar.organization=cmendo \
-           -Dsonar.projectKey=cmendo_microservicio-java 
-
-#name: CICD_EjercicioFinal
-
-#on:
- # push:
-  #  branches: 
-   # - feature-ms-carlosMendoza-ejercicioFinal
-  ##workflow_dispatch:
-
-#jobs:
-  
- # build:
-    
-  #  runs-on: ubuntu-latest
-
-   # steps:
-    
-    #  - name: Clonacion de codigo
-     #   uses: actions/checkout@v4
-
-      #- name: Setup Java JDK
-       # uses: actions/setup-java@v4.2.1
-        #with:
-         # java-version: '17'
-          #distribution: 'temurin'
-      
-      #- name: Compilacion
-       # run: mvn package
-
-      #- name: Ejecucion Test Unitarios
-       # run: mvn package test
-
-      #- name: Reporte Jacoco
-       # run: mvn jacoco:report
-
-      #LINEA AGREGADA
-      #- name: Cache SonarCloud packages
-       # uses: actions/cache@v3
-        #with:
-         # path: ~/.sonar/cache
-          #key: ${{ runner.os }}-sonar
-          #restore-keys: ${{ runner.os }}-sonar
-        
-      #- name: Cache Maven packages
-       # uses: actions/cache@v3
-        #with:
-         # path: ~/.m2
-          #key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          #restore-keys: ${{ runner.os }}-m2
 ###################################
-      #- name: Analisis SonarCloud
-       # run: |
-        #  mvn clean verify sonar:sonar \
-         #   -Dsonar.token=${{secrets.SONAR_TOKEN}} \
-          #  -Dsonar.host.url=https://sonarcloud.io \
-           # -Dsonar.organization=cmendo \
-            #-Dsonar.projectKey=cmendo_microservicio-java 
+      - name: Analisis SonarCloud
+        run: |
+          mvn clean verify sonar:sonar \
+            -Dsonar.token=${{secrets.SONAR_TOKEN}} \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.organization=cmendo \
+            -Dsonar.projectKey=cmendo_microservicio-java 
