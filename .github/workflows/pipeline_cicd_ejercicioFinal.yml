@@ -68,13 +68,13 @@ jobs:
         run: | 
           docker push cmendoza83/ms-microservicio:latest
 
-  deploy:
-    needs: build
-    runs-on: self-hosted
-    steps:
-     - name: Clonacion de codigo
-       uses: actions/checkout@v4
+  #deploy:
+  #  needs: build
+  #  runs-on: self-hosted
+  #  steps:
+  #   - name: Clonacion de codigo
+  #     uses: actions/checkout@v4
 
-     - name: Despliegue
-       run: |
-            kubectl apply -f ms-deploy.yaml
+  #   - name: Despliegue
+  #     run: |
+  #          kubectl apply -f ms-deploy.yaml
