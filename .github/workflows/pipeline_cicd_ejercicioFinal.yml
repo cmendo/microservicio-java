@@ -1,4 +1,5 @@
 name: CICD_EjercicioFinal
+
 #EJECUCION AUTOMATICA CON ACCION PUSH
 on:
   push:
@@ -8,15 +9,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
     #CHECKOUT
       - name: Clonacion de codigo
         uses: actions/checkout@v4
+    
     #CONFIGURACION DE JAVA 8 PARA COMPILACION
       - name: Setup Java JDK
         uses: actions/setup-java@v4.2.1
         with:
           java-version: '8'
           distribution: 'temurin'
+    
     #BUILD      
       - name: BUILD
         run: |
@@ -27,7 +31,7 @@ jobs:
       - name: Ejecucion Test Unitarios
         run: |
           mvn package test
-    #ACTION JaCoCo para creacion de reportes
+    #JaCoCo para creacion de reportes
       - name: Reporte Jacoco
         run: |
           mvn jacoco:report
