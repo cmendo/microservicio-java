@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-microservicio
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ms-microservicio
+  template:
+    metadata:
+      labels:
+        app: ms-microservicio
+    spec:
+      containers:
+      - name: ms-aumento-voto
+        image: cmendoza83/ms-microservicio:latest
+        ports:
+        - containerPort: 8080
