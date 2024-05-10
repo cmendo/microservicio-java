@@ -27,17 +27,17 @@ jobs:
       - name: Ejecucion Test Unitarios
         run: |
           mvn package test
+
+      - name: Reporte Jacoco
+        run: |
+          mvn jacoco:report
         
       - name: Setup Java JDK
         uses: actions/setup-java@v4.2.1
         with:
           java-version: '17'
           distribution: 'temurin'
-        
-      - name: Reporte Jacoco
-        run: |
-          mvn jacoco:report
-              
+                
       - name: Analisis SonarCloud
         run: |
           mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
