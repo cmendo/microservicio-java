@@ -35,12 +35,14 @@ jobs:
       - name: Reporte Jacoco
         run: |
           mvn jacoco:report
-      #CONFIGURACION DE JAVA 8 PARA EJECUCION DE TEST ESTATICOS CON SONAR CLOUD  
+          
+      #CONFIGURACION DE JAVA 17 PARA EJECUCION DE TEST ESTATICOS CON SONAR CLOUD  
       - name: Setup Java JDK
         uses: actions/setup-java@v4.2.1
         with:
           java-version: '17'
           distribution: 'temurin'
+          
       #CONEXION A SONA CLOUD MEDIANTE EL USO DE SECRETOS          
       - name: Analisis SonarCloud
         run: |
@@ -49,22 +51,14 @@ jobs:
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.organization=cmendo \
           -Dsonar.projectKey=cmendo_microservicio-java
-
-     # - name: SonarQube Quality Gate Check
-      #  uses: sonarsource/sonarqube-quality-gate-action@v1.1.0
-      #  with:
-      #    projectBaseDir: .  # Directorio raíz de tu proyecto
-      #    projectName: cmendo/micoservicio-java  # Nombre de tu proyecto en SonarQube
-      #    projectKey: cmendo_ms-aumento-voto  # Clave de tu proyecto en SonarQube
-      #    organization: cmendo  # Nombre de la organización de SonarQube (si es necesario)
-      #    url: https://sonarcloud.io  # URL de tu instancia de SonarQube (cambiar si no estás utilizando SonarCloud)
       
-    #  - name: SonarQube Quality Gate check
-    #    env:
-    #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-    #    uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
-    #    with:
-    #      scanMetadataReportFile: target/sonar/report-task.txt
+      - name: SonarQube Quality Gate check
+        env:
+         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
+        with:
+          scanMetadataReportFile: target/sonar/report-task.txt
+          
       #CONEXION A DOCKER MEDIANTE EL USO DE SECRETOS   
       - name: Docker Login
         uses: docker/login-action@v3.1.0
