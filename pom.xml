@@ -19,9 +19,6 @@
 	</properties>
 
 	<dependencies>
-		<!-- UN COMENTARIO QUE JODA -->
-		<!-- UN COMENTARIO QUE JODA -->
-		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -31,6 +28,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.12</version>
 		</dependency>
 	</dependencies>
 
