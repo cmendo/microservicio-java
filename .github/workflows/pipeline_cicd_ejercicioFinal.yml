@@ -76,11 +76,11 @@ jobs:
     runs-on: self-hosted
     
     steps:
-     #- name: Clonacion de codigo
-     #  uses: actions/checkout@v4
+     - name: Clonacion de codigo
+       uses: actions/checkout@v4
 
      - name: Despliegue
        run: |
-             echo "despliegue"
-            #kubectl apply -f ms-deploy.yaml
+            # echo "despliegue"
+            kubectl apply -f ../deploy/deploy.yaml
             
