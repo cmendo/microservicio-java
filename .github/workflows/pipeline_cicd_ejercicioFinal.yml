@@ -47,7 +47,7 @@ jobs:
       - name: Docker Login
         uses: docker/login-action@v3.1.0
         with:
-          username: cmendoza83
+          username: ${{secrets.DOCKER_USER}}
           password: ${{secrets.DOCKER_PASS}}
 
     #  - name: Set up Docker
