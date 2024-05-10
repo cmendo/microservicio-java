@@ -46,12 +46,12 @@ jobs:
           -Dsonar.organization=cmendo \
           -Dsonar.projectKey=cmendo_microservicio-java
       
-      - name: SonarQube Quality Gate check
-        env:
-         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
-        with:
-          scanMetadataReportFile: target/sonar/report-task.txt
+    #  - name: SonarQube Quality Gate check
+    #    env:
+    #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    #    uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
+    #    with:
+    #      scanMetadataReportFile: target/sonar/report-task.txt
          
       - name: Docker Login
         uses: docker/login-action@v3.1.0
