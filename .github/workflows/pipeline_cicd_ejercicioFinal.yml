@@ -23,6 +23,10 @@ jobs:
         run: |
           mvn package
           #mvn -B clean verify -Pcoverage
+
+      - name: Ejecucion Test Unitarios
+        run: |
+          mvn package test
         
       - name: Setup Java JDK
         uses: actions/setup-java@v4.2.1
@@ -30,13 +34,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
         
-      #- name: Ejecucion Test Unitarios
-      #  run: |
-      #    mvn package test
-        
-      #- name: Reporte Jacoco
-      #  run: |
-      #    mvn jacoco:report
+      - name: Reporte Jacoco
+        run: |
+          mvn jacoco:report
               
       - name: Analisis SonarCloud
         run: |
