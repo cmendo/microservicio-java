@@ -1,8 +1,8 @@
 name: CICD_EjercicioFinal
 on:
   push:
-    branches: 
-    - feature-ms-carlosMendoza-ejercicioFinal
+    #branches: 
+    #- feature-ms-carlosMendoza-ejercicioFinal
   workflow_dispatch:
   
 jobs:
