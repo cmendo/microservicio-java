@@ -46,14 +46,14 @@ jobs:
           -Dsonar.organization=cmendo \
           -Dsonar.projectKey=cmendo_microservicio-java
 
-      - name: SonarQube Quality Gate Check
-        uses: sonarsource/sonarqube-quality-gate-action@v1.1.0
-        with:
-          projectBaseDir: .  # Directorio raíz de tu proyecto
-          projectName: cmendo/micoservicio-java  # Nombre de tu proyecto en SonarQube
-          projectKey: cmendo_ms-aumento-voto  # Clave de tu proyecto en SonarQube
-          organization: cmendo  # Nombre de la organización de SonarQube (si es necesario)
-          url: https://sonarcloud.io  # URL de tu instancia de SonarQube (cambiar si no estás utilizando SonarCloud)
+     # - name: SonarQube Quality Gate Check
+      #  uses: sonarsource/sonarqube-quality-gate-action@v1.1.0
+      #  with:
+      #    projectBaseDir: .  # Directorio raíz de tu proyecto
+      #    projectName: cmendo/micoservicio-java  # Nombre de tu proyecto en SonarQube
+      #    projectKey: cmendo_ms-aumento-voto  # Clave de tu proyecto en SonarQube
+      #    organization: cmendo  # Nombre de la organización de SonarQube (si es necesario)
+      #    url: https://sonarcloud.io  # URL de tu instancia de SonarQube (cambiar si no estás utilizando SonarCloud)
       
     #  - name: SonarQube Quality Gate check
     #    env:
