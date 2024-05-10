@@ -82,5 +82,5 @@ jobs:
      - name: Despliegue
        run: |
             # echo "despliegue"
-            kubectl apply -f ../deploy/deploy.yaml
+            kubectl apply -f ./deploy/deploy.yaml
             
