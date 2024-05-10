@@ -3,7 +3,7 @@ on:
   push:
     branches: 
     - feature-ms-carlosMendoza-ejercicioFinal
-  ##workflow_dispatch:
+  workflow_dispatch:
   
 jobs:
   build:
