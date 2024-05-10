@@ -25,7 +25,6 @@ jobs:
       - name: BUILD
         run: |
           mvn package
-          #mvn -B clean verify -Pcoverage
     
     #EJECUCION DE TEST UNITARIOS
       - name: Ejecucion Test Unitarios
@@ -57,7 +56,7 @@ jobs:
          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
         with:
-          scanMetadataReportFile: target/sonar/report-task.txt
+          scanMetadataReportFile: ./target/sonar/report-task.txt
           
       #CONEXION A DOCKER MEDIANTE EL USO DE SECRETOS   
       - name: Docker Login
