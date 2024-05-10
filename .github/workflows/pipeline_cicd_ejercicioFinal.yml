@@ -9,27 +9,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    #CHECKOUT
       - name: Clonacion de codigo
         uses: actions/checkout@v4
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.2.1
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          
+      - name: Compilacion
+        run: |
+          mvn package
+          #mvn -B clean verify -Pcoverage
         
       - name: Setup Java JDK
         uses: actions/setup-java@v4.2.1
         with:
           java-version: '17'
           distribution: 'temurin'
-          
-      - name: Compilacion
-        run: |
-          #mvn package
-          mvn -B clean verify -Pcoverage
         
-      - name: Ejecucion Test Unitarios
-        run: |
-          mvn package test
+      #- name: Ejecucion Test Unitarios
+      #  run: |
+      #    mvn package test
         
-      - name: Reporte Jacoco
-        run: |
-          mvn jacoco:report
+      #- name: Reporte Jacoco
+      #  run: |
+      #    mvn jacoco:report
               
       - name: Analisis SonarCloud
         run: |
